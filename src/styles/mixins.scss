@@ -1,0 +1,104 @@
+@import "./variables.scss";
+
+@mixin safe-padding() {
+  padding: 16px;
+}
+
+@mixin modal() {
+  z-index: 1000;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  min-height: 100%;
+  max-width: 1024px;
+  background: #fff;
+  flex: 1;
+}
+
+@mixin keyframes($animation-name) {
+  @-webkit-keyframes #{$animation-name} {
+      @content;
+  }
+  @-moz-keyframes #{$animation-name} {
+      @content;
+  }
+  @-ms-keyframes #{$animation-name} {
+      @content;
+  }
+  @-o-keyframes #{$animation-name} {
+      @content;
+  }
+  @keyframes #{$animation-name} {
+      @content;
+  }
+}
+
+@mixin animation($str) {
+  -webkit-animation: #{$str};
+  -moz-animation: #{$str};
+  -ms-animation: #{$str};
+  -o-animation: #{$str};
+  animation: #{$str};
+}
+
+@mixin breakpoint($point) {
+    @if $point == desktop {
+        @media (min-width: 70em) { @content ; }
+    }
+    @else if $point == laptop {
+        @media (min-width: 64em) { @content ; }
+    }
+    @else if $point == tablet {
+        @media (min-width: 50em) { @content ; }
+    }
+    @else if $point == phablet {
+        @media (min-width: 37.5em)  { @content ; }
+    }
+    @else if $point == mobileonly {
+        @media (max-width: 37.5em)  { @content ; }
+    }
+}
+
+@mixin grid($margin) {
+  display: inline-block;
+  margin-bottom: $margin;
+  margin-right: $margin;
+
+  @include breakpoint(mobileonly) {
+    width: 100%;
+    margin-right: 0;
+  }
+
+  @include breakpoint(phablet) {
+    width: calc((100% - #{$margin})/ 2);
+
+    &:nth-of-type(2n) {
+      margin-right: 0;
+    }
+  }
+
+  @include breakpoint(tablet) {
+    width: calc((100% - #{$margin * 2}) / 3);
+
+    &:nth-of-type(2n) {
+      margin-right: $margin;
+    }
+
+    &:nth-of-type(3n) {
+      margin-right: 0;
+    }
+  }
+
+  @include breakpoint(laptop) {
+    width: calc((100% - #{$margin * 3}) / 4);
+
+    &:nth-of-type(3n) {
+      margin-right: $margin;
+    }
+
+    &:nth-of-type(4n) {
+      margin-right: 0;
+    }
+  }
+}

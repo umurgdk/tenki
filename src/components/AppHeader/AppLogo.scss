@@ -1,0 +1,23 @@
+@import "styles/variables.scss";
+@import "styles/mixins.scss";
+
+.AppLogo {
+  display: block;
+  border: 0;
+  display: flex;
+  flex-direction: row;
+  padding: 0;
+
+  .AppLogoIcon {
+    font-size: 24px;
+    align-self: center;
+  }
+
+  h1 {
+    padding-right: 5px;
+    margin: 0;
+    line-height: 30pt;
+    font-weight: normal;
+    font-family: 'Pacifico', cursive;
+  }
+}

@@ -1,0 +1,19 @@
+@import "styles/mixins.scss";
+
+.EmptyGrid {
+  @include safe-padding();
+  text-align: center;
+
+  display: flex;
+  flex-direction: column;
+  align-content: center;
+  justify-content: center;
+
+  .EmptyIcon {
+    color: #444;
+  }
+
+  button {
+    margin-top: 20px;
+  }
+}

@@ -1,0 +1,9 @@
+@import "styles/mixins.scss";
+
+.WeatherGrid {
+  @include safe-padding();
+
+  .ListView li {
+    @include grid(16px);
+  }
+}
